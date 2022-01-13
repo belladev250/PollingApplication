@@ -1,6 +1,6 @@
 package com.example.pollingapplication.config;
 
-import com.example.pollingapplication.security.CustomUserDetailsService;
+import  com.example.pollingapplication.security.CustomUserDetailsService;
 import com.example.pollingapplication.security.JwtAuthenticationEntryPoint;
 import com.example.pollingapplication.security.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
