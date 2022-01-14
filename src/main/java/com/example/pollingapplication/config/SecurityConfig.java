@@ -28,8 +28,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 )
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private CustomUserDetailsService customerUserdetailsService;
+//    @Autowired
+//    private CustomUserDetailsService customerUserdetailsService;
+    
+    @Bean
+    public CustomUserDetailsService customerUserdetailsService(){
+        return new CustomUserDetailsService ();
+    }
+
 
     @Autowired
     private JwtAuthenticationEntryPoint unauthorizeHandler;
@@ -41,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-        authenticationManagerBuilder.userDetailsService(customerUserdetailsService)
+        authenticationManagerBuilder.userDetailsService(customerUserdetailsService())
                 .passwordEncoder(passwordEncoder());
     }
 
