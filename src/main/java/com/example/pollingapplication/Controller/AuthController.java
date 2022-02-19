@@ -69,12 +69,15 @@ public class AuthController {
 						
 						)
 				
-				); 
-		
+				);
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		
-		String jwt = tokenProvider.generateToken(authentication);
-		return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
+		try{
+			String jwt = tokenProvider.generateToken(authentication);
+			return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
+		}catch (Exception e){
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().body("internal server errors");
+		}
 		
 		
 	}
