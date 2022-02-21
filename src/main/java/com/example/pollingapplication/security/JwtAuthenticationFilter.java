@@ -40,7 +40,7 @@ public class JwtAuthenticationFilter  extends OncePerRequestFilter {
                 UsernamePasswordAuthenticationToken authentication = new
                         UsernamePasswordAuthenticationToken(userDetails,null,userDetails.getAuthorities());
                 
-             // setting the athentication inside the spring context
+             // setting the authentication inside the spring context
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
